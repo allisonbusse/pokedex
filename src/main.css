@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: rgb(67, 66, 66);
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+header {
+    background-color: #8b4141;
+    padding: 20px;
+    border-bottom: solid 12px #ff835a;
+    text-align: center;
+}
+
+h1 {
+    font-size: 6em;
+    margin: .1em;
+    color: white;
+    font-family: 'Amatic SC', cursive;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "sidebar pokecards"
+}
+
+#sidebar {
+    padding: 20px;
+    background-color: #ffacac;
+    grid-area: sidebar;
+}
+
+#pokecards {
+    padding: 20px;
+    grid-area: pokecards;
+}
+
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 220px);
+    grid-auto-rows: auto;
+    grid-gap: 1em;
+}
+
+li {
+    width: 220px;
+    padding: 1em;
+    display: inline-block;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.poke-image {
+    width: 100%;
+}
+
+.normal {
+    background-color: #A8A878;
+    padding: 4px;
+    text-transform: uppercase;
+}
+
+footer {
+    background-color: #aca473;
+    height: 3em;
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+    main {grid-template-columns: 1fr;
+    grid-template-areas: 
+    "sidebar"
+    "pokecards"
+}}
