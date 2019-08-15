@@ -1,8 +1,8 @@
 import Component from '../Component.js';
 import Header from './Header.js';
+import Footer from './Footer.js';
 import pokemons from '../../../data/sample-data.js';
 import PokeList from '../pokedex/PokeList.js';
-import PokeCard from '../pokedex/PokeCard.js';
 
 class App extends Component {
     onRender(dom) {
@@ -10,16 +10,28 @@ class App extends Component {
         const headerDOM = header.renderDOM();
         dom.prepend(headerDOM);
 
-        const props = {
-            pokemons: pokemons
-        };
+        // const props = {
+        //     pokemons: pokemons
+        // };
 
-        const pokeList = new PokeList(props);
-        const pokeListDOM = pokeList.renderDOM();
+        
 
-        const pokeCards = dom.querySelector('#pokecards');
-        pokeCards.appendChild(pokeListDOM);
+        const url = 'https://alchemy-pokedex.herokuapp.com/api/pokedex';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const pokeList = new PokeList({ pokemons: data });
+                const pokeListDOM = pokeList.renderDOM();
+                const pokeCards = dom.querySelector('#pokecards');
+                pokeCards.appendChild(pokeListDOM);
+            });
+
+        const footer = new Footer();
+        const footerDOM = footer.renderDOM();
+        dom.appendChild(footerDOM);
     }
+
+    
 
     renderHTML() {
         return /*html*/`

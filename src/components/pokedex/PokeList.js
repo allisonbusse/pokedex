@@ -5,8 +5,8 @@ class PokeList extends Component {
     onRender(dom) {
         const pokemons = this.props.pokemons;
 
-        pokemons.forEach(pokemon => {
-            const props = { pokemon: pokemon };
+        pokemons.results.forEach(element => {
+            const props = { pokemons: element };
             const pokeCard = new PokeCard(props);
             const pokeCardDOM = pokeCard.renderDOM();
             dom.appendChild(pokeCardDOM);
